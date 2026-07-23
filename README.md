@@ -27,9 +27,20 @@ Unofficial Guide:
 
 [https://www.helgejohnsen.no/skriverier/how-to-setup-stack-overflow-keyboard](https://www.helgejohnsen.no/skriverier/how-to-setup-stack-overflow-keyboard)
 
+
+### Resources
+
 TheKey.json file & the .hex file are located in Config:
 * Config/3key.hex
 * Config/TheKey.json
+
+The following sites needs to be referenced for flashing the keyboard:
+
+https://kbfirmware.com/
+
+https://qmk.fm/toolbox
+
+https://github.com/qmk/qmk_toolbox/pull/499
 
 ### Installing the firmware
 
