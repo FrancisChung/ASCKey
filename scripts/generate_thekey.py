@@ -62,7 +62,7 @@ STOCK_SETTINGS = {
 def build_key(key_id):
     legend, url = KEY_URLS[key_id]
     state = {"x": key_id, "y": 0, **STOCK_KEY_STATE}
-    macro_keycode = {"id": f"M({key_id})", "fields": []}
+    macro_keycode = {"id": "M()", "fields": [key_id]}
     keycodes = [macro_keycode] + [dict(TRNS_KEYCODE) for _ in range(15)]
     return {
         "id": key_id,

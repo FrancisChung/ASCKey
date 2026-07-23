@@ -59,7 +59,7 @@ class TestTheKeyJson(unittest.TestCase):
         for key_id, (legend, _url) in EXPECTED_URLS.items():
             key = self.keyboard["keys"][key_id]
             self.assertEqual(key["legend"], legend)
-            self.assertEqual(key["keycodes"][0], {"id": f"M({key_id})", "fields": []})
+            self.assertEqual(key["keycodes"][0], {"id": "M()", "fields": [key_id]})
 
     def test_non_layer0_keycodes_remain_transparent(self):
         for key in self.keyboard["keys"]:
