@@ -27,9 +27,9 @@ Unofficial Guide:
 
 [https://www.helgejohnsen.no/skriverier/how-to-setup-stack-overflow-keyboard](https://www.helgejohnsen.no/skriverier/how-to-setup-stack-overflow-keyboard)
 
-TheKey.json file:
-
-Reference/TheKey.json
+TheKey.json file & the .hex file are located in Config:
+* Config/3key.hex
+* Config/TheKey.json
 
 ### Installing the firmware
 
