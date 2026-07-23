@@ -143,3 +143,10 @@ vite.config.ts.timestamp-*
 .vite/
 
 .idea/
+
+# Python
+__pycache__/
+*.pyc
+
+# Claude Code worktrees
+.claude/worktrees/
