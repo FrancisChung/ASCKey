@@ -34,7 +34,7 @@ Reference/TheKey.json
 ### Installing the firmware
 
 1. Go to the [archived Keyboard Firmware Builder](https://web.archive.org/web/20260214211516/https://docs.drop.com/thekey.json) linked from Drop's official guide (or kbfirmware.com directly, if still reachable).
-2. Upload `Reference/TheKey.json` via "Upload Keyboard Firmware Builder configuration".
+2. Upload `Config/TheKey.json` via "Upload Keyboard Firmware Builder configuration".
 3. Go to the **Compile** tab and click **Download .hex**.
 4. Flash the downloaded `.hex` file to the macropad — see "Flashing on Linux" below for the `dfu-programmer` steps; on Mac/Windows use QMK Toolbox instead, confirming the MCU shows `atmega32u4`.
 5. With a browser window focused, press each key and confirm it opens a new tab to the correct URL: `A` → claude.ai, `SO` → stackoverflow.com, `C` → chatgpt.com.

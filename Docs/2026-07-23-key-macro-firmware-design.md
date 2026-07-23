@@ -2,7 +2,7 @@
 
 This spec covers implementing the functionality described in `2026-07-22-initial-design.md`: configuring the 3-key StackOverflow "The Key" macropad (repurposed as ASCKey) so each key opens a browser tab to a specific URL.
 
-Both reference guides in `/Reference` (Drop's official help article and Helge Johnsen's unofficial guide) describe the same mechanism and tooling, confirmed against the existing `Reference/TheKey.json` (currently the stock/default file — keys are unconfigured `KC_1`/`KC_2`/`KC_3`, no macros defined).
+Both reference guides in `/Reference` (Drop's official help article and Helge Johnsen's unofficial guide) describe the same mechanism and tooling, confirmed against the existing `../Config/TheKey.json` (currently the stock/default file — keys are unconfigured `KC_1`/`KC_2`/`KC_3`, no macros defined).
 
 ## Target environment
 
@@ -48,7 +48,7 @@ Each macro follows this action sequence (action codes per the JSON schema: `2`=p
 
 ## Deliverable
 
-`Reference/TheKey.json`, fully populated, replacing the current stock/default content. All non-key fields (`pins`, `controller`, `bounds`, `rows`/`cols`, `settings`, `quantum`) are already correct for this hardware and must be preserved unchanged — only the 3 keys' `keycodes` arrays (layer-0 entry becomes `M(0)`/`M(1)`/`M(2)`, legends set) and the top-level `macros` object are modified.
+`../Config/TheKey.json`, fully populated, replacing the current stock/default content. All non-key fields (`pins`, `controller`, `bounds`, `rows`/`cols`, `settings`, `quantum`) are already correct for this hardware and must be preserved unchanged — only the 3 keys' `keycodes` arrays (layer-0 entry becomes `M(0)`/`M(1)`/`M(2)`, legends set) and the top-level `macros` object are modified.
 
 The file must remain valid JSON matching the existing schema (as shown in both reference PDFs and the current stock file).
 
@@ -62,5 +62,5 @@ The file must remain valid JSON matching the existing schema (as shown in both r
 
 This is a hardware firmware artifact — verification is necessarily manual and cannot be fully automated:
 
-- **Automatable**: confirm `Reference/TheKey.json` is well-formed JSON and structurally matches the existing schema (same top-level keys, same non-key fields preserved, keycodes/macros populated as specified).
+- **Automatable**: confirm `../Config/TheKey.json` is well-formed JSON and structurally matches the existing schema (same top-level keys, same non-key fields preserved, keycodes/macros populated as specified).
 - **Manual (user)**: import the file into kbfirmware.com's Keyboard Firmware Builder, compile to `.hex`, flash via QMK Toolbox, and physically press each key to confirm it opens the correct URL in a new tab.

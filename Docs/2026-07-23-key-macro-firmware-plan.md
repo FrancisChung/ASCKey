@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Populate `Reference/TheKey.json` so the 3-key ASCKey macropad opens `https://claude.ai`, `https://stackoverflow.com`, and `https://chatgpt.com` in new browser tabs when its A / StackOverflow / C keys are pressed.
+**Goal:** Populate `../Config/TheKey.json` so the 3-key ASCKey macropad opens `https://claude.ai`, `https://stackoverflow.com`, and `https://chatgpt.com` in new browser tabs when its A / StackOverflow / C keys are pressed.
 
-**Architecture:** A pure Python function converts a URL string into a kbfirmware.com macro action list (Ctrl+T, type each character, Enter). A generator script uses that function to build the full `TheKey.json` structure, preserving all non-key fields from the stock file untouched. A separate test file validates the final `Reference/TheKey.json` against the spec. All three files are plain-stdlib Python (`unittest`, `json`) — no new dependencies, matching this repo's current zero-tooling state.
+**Architecture:** A pure Python function converts a URL string into a kbfirmware.com macro action list (Ctrl+T, type each character, Enter). A generator script uses that function to build the full `TheKey.json` structure, preserving all non-key fields from the stock file untouched. A separate test file validates the final `../Config/TheKey.json` against the spec. All three files are plain-stdlib Python (`unittest`, `json`) — no new dependencies, matching this repo's current zero-tooling state.
 
 **Tech Stack:** Python 3 standard library only (`unittest`, `json`).
 
@@ -12,7 +12,7 @@
 
 - Modifier key is `KC_LCTL` (Ctrl), not `KC_LGUI` (Cmd) — target environments are Linux Mint/Cinnamon and Windows, both use Ctrl+T for new tab.
 - URLs are typed in full (`https://...`), not bare domains.
-- `Reference/TheKey.json`'s non-key fields (`controller`, `bounds`, `rows`, `cols`, `pins`, `quantum`, `settings`) and each key's `state`/`row`/`col`/`id` must remain byte-for-byte identical to the current stock file — only `legend` and `keycodes[0]` change per key, plus the top-level `macros` object.
+- `../Config/TheKey.json`'s non-key fields (`controller`, `bounds`, `rows`, `cols`, `pins`, `quantum`, `settings`) and each key's `state`/`row`/`col`/`id` must remain byte-for-byte identical to the current stock file — only `legend` and `keycodes[0]` change per key, plus the top-level `macros` object.
 - Key mapping (col 0→2, left to right): `A` → `https://claude.ai`, `SO` → `https://stackoverflow.com`, `C` → `https://chatgpt.com`.
 - Full spec: `Docs/2026-07-23-key-macro-firmware-design.md`.
 
@@ -172,11 +172,11 @@ git commit -m "Add URL-to-macro action generator for ASCKey firmware"
 
 **Files:**
 - Create: `scripts/generate_thekey.py`
-- Modify: `Reference/TheKey.json` (overwritten by running the script, not hand-edited)
+- Modify: `../Config/TheKey.json` (overwritten by running the script, not hand-edited)
 
 **Interfaces:**
 - Consumes: `scripts.thekey_macro.url_open_macro(url: str) -> list[dict]` from Task 1.
-- Produces: a runnable script (`python3 -m scripts.generate_thekey`) that overwrites `Reference/TheKey.json`. No importable symbols are consumed by later tasks — Task 3 only reads the resulting JSON file.
+- Produces: a runnable script (`python3 -m scripts.generate_thekey`) that overwrites `../Config/TheKey.json`. No importable symbols are consumed by later tasks — Task 3 only reads the resulting JSON file.
 
 - [ ] **Step 1: Write the generator**
 
@@ -313,7 +313,7 @@ git commit -m "Generate ASCKey TheKey.json with URL-opening macros"
 - Create: `tests/test_thekey_json.py`
 
 **Interfaces:**
-- Consumes: `scripts.thekey_macro.url_open_macro(url: str) -> list[dict]` from Task 1; reads `Reference/TheKey.json` produced by Task 2.
+- Consumes: `scripts.thekey_macro.url_open_macro(url: str) -> list[dict]` from Task 1; reads `../Config/TheKey.json` produced by Task 2.
 - Produces: nothing consumed by later tasks — this is the final acceptance gate for the plan.
 
 - [ ] **Step 1: Write the test**
@@ -428,7 +428,7 @@ git commit -m "Add acceptance test for ASCKey TheKey.json macros"
 After Task 3 passes, the remaining verification is physical and must be done by the user, per the spec's "Out of scope"/"Verification" sections:
 
 1. Go to the archived Keyboard Firmware Builder: `https://web.archive.org/web/20260214211516/https://docs.drop.com/thekey.json` page linked from the official Drop guide (or the current kbfirmware.com if still reachable).
-2. Upload `Reference/TheKey.json` via "Upload Keyboard Firmware Builder configuration".
+2. Upload `../Config/TheKey.json` via "Upload Keyboard Firmware Builder configuration".
 3. Go to the **Compile** tab, click **Download .hex**.
 4. Flash the `.hex` file to the macropad using QMK Toolbox (confirm MCU shows `atmega32u4`).
 5. With a browser window focused, press each of the 3 keys and confirm it opens a new tab to the correct URL.
