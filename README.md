@@ -58,10 +58,16 @@ On Linux Mint, skip QMK Toolbox and flash directly with `dfu-programmer`, the sa
 
 ```
 sudo apt install dfu-programmer
-sudo dfu-programmer atmega32u4 erase --force
+sudo dfu-programmer atmega32u4 erase
 sudo dfu-programmer atmega32u4 flash /path/to/3key.hex
 sudo dfu-programmer atmega32u4 reset
 ```
 
 Before flashing, the macropad must be put into bootloader mode by pressing the reset button on the exposed PCB. Reaching that button requires unscrewing the back plate to open the case — you'll need a small screwdriver (Phillips/Torx) for this step.
+
+### Cable note: use USB-A to USB-C, not USB-C to USB-C
+
+This board doesn't power on with a USB-C to USB-C cable — it only works with USB-A to USB-C.
+
+USB-C hosts require a device to present a pull-down resistor on the CC pins before they'll enable VBUS/data. This board's USB-C port appears to skip that resistor, so USB-C hosts never detect it and never power the port. USB-A ports don't do this negotiation — they supply power and data unconditionally — so an A-to-C cable works regardless. This is a hardware limitation of the PCB, not something fixable via firmware.
 
