@@ -9,11 +9,11 @@ What way to repurpose this keyboard that reflects the AI Age we live in.
 
 By Flipping the V key vertically, you get an "ASC" keyboard with ASC standing for Anthropic, Stackoverflow and Codex
 
-<img width="2160" height="2880" alt="image" src="https://github.com/user-attachments/assets/9dfbc3af-e80d-4f9d-80a3-a5b02f449f00" />
+<img width="270" height="360" alt="image" src="https://github.com/user-attachments/assets/9dfbc3af-e80d-4f9d-80a3-a5b02f449f00" />
 
 Pressing each key should open a tab on their respective URLs
 
-
+![Peek 2026-07-24 13-23.gif](Docs/Peek%202026-07-24%2013-23.gif)
 
 ### References
 
